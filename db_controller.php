@@ -1,17 +1,19 @@
 <?php
-    // Replace these with your actual Render DB credentials
-    $conn_host = "dpg-d0ai2q6r433s73fnojsg-a";  // Render's DB host
-    $conn_port = 3306;                         // Use 3306 for MySQL
-    $conn_username = "mysql_hx4z_user";
-    $conn_password = "wvh7ee3avvYuprqxEMq1JqYJxfrlWrws";
-    $conn_database = "alumni_db";              // The DB name Render gave you
+    // PostgreSQL connection info (from Render.com)
+    $host = "dpg-d0ai2q6r433s73fnojsg-a";
+    $port = "5432";
+    $dbname = "alumni_db";
+    $user = "mysql_hx4z_user"; // double-check name even if it says 'mysql'
+    $password = "wvh7ee3avvYuprqxEMq1JqYJxfrlWrws";
 
-    // Create connection
-    $conn = new mysqli($conn_host, $conn_username, $conn_password, $conn_database, $conn_port);
+    // Build connection string
+    $conn_string = "host=$host port=$port dbname=$dbname user=$user password=$password";
 
-    // Check connection and redirect if failed
-    if ($conn->connect_error) {
+    // Try connecting
+    $conn = pg_connect($conn_string);
+
+    if (!$conn) {
         header('Location: maintenance.php');
-        die();
+        exit;
     }
 ?>
