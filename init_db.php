@@ -1,6 +1,12 @@
 <?php
     include 'db_controller.php';
 
+    $host = 'dpg-d0ai2q6r433s73fnojsg-a';
+    $db = 'alumni_db';
+    $user = 'mysql_hx4z_user';
+    $pass = 'wvh7ee3avvYuprqxEMq1JqYJxfrlWrws';
+    $port = 5432;
+
     // Check connection before executing anything DB related
     if (!$conn->connect_error) {
         try {
